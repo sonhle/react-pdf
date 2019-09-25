@@ -78,6 +78,7 @@ export default class Document extends PureComponent {
   componentWillUnmount() {
     this.loadingTask.destroy();
     cancelRunningTask(this.runningTask);
+    this.loadingTask = null;
   }
 
   loadDocument = async () => {
@@ -105,7 +106,7 @@ export default class Document extends PureComponent {
 
     try {
       // If another loading is in progress, let's cancel it
-      if(this.loadingTask) this.loadingTask.destroy();
+      if(this.loadingTask) await this.loadingTask.destroy();
       cancelRunningTask(this.runningTask);
 
       this.loadingTask = pdfjs.getDocument({ ...source, ...options });

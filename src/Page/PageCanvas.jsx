@@ -37,6 +37,7 @@ export class PageCanvasInternal extends PureComponent {
     if (this.canvasLayer) {
       this.canvasLayer.width = 0;
       this.canvasLayer.height = 0;
+      delete this.canvasLayer;
       this.canvasLayer = null;
     }
   }
