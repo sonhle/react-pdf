@@ -418,7 +418,10 @@ function (_PureComponent) {
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
-      this.loadingTask.destroy();
+      if (this.loadingTask) {
+        this.loadingTask.destroy();
+      }
+
       (0, _utils.cancelRunningTask)(this.runningTask);
       this.loadingTask = null;
     }
